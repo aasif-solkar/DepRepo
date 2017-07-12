@@ -267,6 +267,26 @@ CREATE TABLE `am_user` (
 INSERT INTO `am_user` VALUES   (1,'Abhimanyu Kashikar','1wIROGQqh0HPDv8vRi2Nxw==','a',1,1,987654321,76,0,1,'2017-06-30 00:00:00');
 /*!40000 ALTER TABLE `am_user` ENABLE KEYS */;
 
+
+--
+-- Table structure for table `amtool`.`am_risk`
+--
+
+DROP TABLE IF EXISTS `am_risk`;
+CREATE TABLE `am_risk` (
+  `risk_id` int(11) NOT NULL AUTO_INCREMENT,
+  `risk_level` varchar(45) NOT NULL,
+  PRIMARY KEY (`risk_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_risk`
+--
+
+/*!40000 ALTER TABLE `am_risk` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_risk` ENABLE KEYS */;
+
+
 --
 -- Table structure for table `amtool`.`am_assigned_acc`
 --
@@ -543,25 +563,6 @@ INSERT INTO `am_resources` VALUES   (4,'customerMgmt.xhtml');
 INSERT INTO `am_resources` VALUES   (5,'addUser.xhtml');
 INSERT INTO `am_resources` VALUES   (6,'editUser.xhtml');
 /*!40000 ALTER TABLE `am_resources` ENABLE KEYS */;
-
-
---
--- Table structure for table `amtool`.`am_risk`
---
-
-DROP TABLE IF EXISTS `am_risk`;
-CREATE TABLE `am_risk` (
-  `risk_id` int(11) NOT NULL AUTO_INCREMENT,
-  `risk_level` varchar(45) NOT NULL,
-  PRIMARY KEY (`risk_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_risk`
---
-
-/*!40000 ALTER TABLE `am_risk` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_risk` ENABLE KEYS */;
 
 
 

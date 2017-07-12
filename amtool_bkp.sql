@@ -283,6 +283,18 @@ CREATE TABLE `am_risk` (
 /*!40000 ALTER TABLE `am_risk` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_risk` ENABLE KEYS */;
 
+CREATE TABLE `am_product` (
+  `prod_id` int(11) NOT NULL,
+  `prod_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`prod_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_product`
+--
+
+/*!40000 ALTER TABLE `am_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_product` ENABLE KEYS */;
 
 --
 -- Table structure for table `amtool`.`am_assigned_acc`
@@ -369,30 +381,6 @@ CREATE TABLE `am_acc_phases` (
 
 /*!40000 ALTER TABLE `am_acc_phases` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_acc_phases` ENABLE KEYS */;
-
-
-CREATE TABLE `am_product` (
-  `prod_id` int(11) NOT NULL,
-  `prod_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`prod_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_product`
---
-
-/*!40000 ALTER TABLE `am_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_product` ENABLE KEYS */;
-
-
---
--- Table structure for table `amtool`.`am_resources`
---
-
---
--- Table structure for table `amtool`.`am_assigned_acc_prod`
---
-
 
 CREATE TABLE `am_assigned_acc_prod` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

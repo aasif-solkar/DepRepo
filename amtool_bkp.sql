@@ -1,8 +1,6 @@
 --
 -- Table structure for table `amtool`.`am_country`
 --
-
-DROP TABLE IF EXISTS `am_country`;
 CREATE TABLE `am_country` (
   `country_id` int(11) NOT NULL AUTO_INCREMENT,
   `country_name` varchar(200) NOT NULL,
@@ -218,7 +216,6 @@ INSERT INTO `am_country` VALUES   (197,'Zimbabwe');
 -- Table structure for table `amtool`.`am_role`
 --
 
-DROP TABLE IF EXISTS `am_role`;
 CREATE TABLE `am_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(45) NOT NULL,
@@ -238,7 +235,7 @@ INSERT INTO `am_role` VALUES   (5,'Product Consultant');
 /*!40000 ALTER TABLE `am_role` ENABLE KEYS */;
 
 
-DROP TABLE IF EXISTS `am_user`;
+
 CREATE TABLE `am_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) NOT NULL,
@@ -272,7 +269,7 @@ INSERT INTO `am_user` VALUES   (1,'Abhimanyu Kashikar','1wIROGQqh0HPDv8vRi2Nxw==
 -- Table structure for table `amtool`.`am_risk`
 --
 
-DROP TABLE IF EXISTS `am_risk`;
+
 CREATE TABLE `am_risk` (
   `risk_id` int(11) NOT NULL AUTO_INCREMENT,
   `risk_level` varchar(45) NOT NULL,
@@ -291,7 +288,7 @@ CREATE TABLE `am_risk` (
 -- Table structure for table `amtool`.`am_assigned_acc`
 --
 
-DROP TABLE IF EXISTS `am_assigned_acc`;
+
 CREATE TABLE `am_assigned_acc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_id` int(11) NOT NULL,
@@ -331,7 +328,6 @@ CREATE TABLE `am_assigned_acc` (
 -- Table structure for table `amtool`.`am_phases`
 --
 
-DROP TABLE IF EXISTS `am_phases`;
 CREATE TABLE `am_phases` (
   `phase_id` int(11) NOT NULL AUTO_INCREMENT,
   `phase_name` varchar(45) NOT NULL,
@@ -346,7 +342,7 @@ CREATE TABLE `am_phases` (
 /*!40000 ALTER TABLE `am_phases` ENABLE KEYS */;
 
 
-DROP TABLE IF EXISTS `am_acc_phases`;
+
 CREATE TABLE `am_acc_phases` (
   `acc_phs_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_id` int(11) NOT NULL,
@@ -374,7 +370,7 @@ CREATE TABLE `am_acc_phases` (
 /*!40000 ALTER TABLE `am_acc_phases` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_acc_phases` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `am_product`;
+
 CREATE TABLE `am_product` (
   `prod_id` int(11) NOT NULL,
   `prod_name` varchar(45) NOT NULL,
@@ -397,7 +393,7 @@ CREATE TABLE `am_product` (
 -- Table structure for table `amtool`.`am_assigned_acc_prod`
 --
 
-DROP TABLE IF EXISTS `am_assigned_acc_prod`;
+
 CREATE TABLE `am_assigned_acc_prod` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `assigned_acc_id` int(11) NOT NULL,
@@ -421,7 +417,7 @@ CREATE TABLE `am_assigned_acc_prod` (
 -- Table structure for table `amtool`.`am_audit_log`
 --
 
-DROP TABLE IF EXISTS `am_audit_log`;
+
 CREATE TABLE `am_audit_log` (
   `audit_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `action` varchar(45) NOT NULL DEFAULT '',
@@ -445,7 +441,6 @@ CREATE TABLE `am_audit_log` (
 -- Table structure for table `amtool`.`am_followup_status`
 --
 
-DROP TABLE IF EXISTS `am_followup_status`;
 CREATE TABLE `am_followup_status` (
   `status_id` int(11) NOT NULL AUTO_INCREMENT,
   `status_name` varchar(45) NOT NULL,
@@ -464,7 +459,7 @@ CREATE TABLE `am_followup_status` (
 -- Table structure for table `amtool`.`am_followups`
 --
 
-DROP TABLE IF EXISTS `am_followups`;
+
 CREATE TABLE `am_followups` (
   `fu_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_id` int(11) NOT NULL,
@@ -494,7 +489,7 @@ CREATE TABLE `am_followups` (
 -- Table structure for table `amtool`.`am_new_acc`
 --
 
-DROP TABLE IF EXISTS `am_new_acc`;
+
 CREATE TABLE `am_new_acc` (
   `new_acc_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_name` varchar(45) NOT NULL,
@@ -544,7 +539,7 @@ CREATE TABLE `am_new_acc` (
 -- Table structure for table `amtool`.`am_product`
 --
 
-DROP TABLE IF EXISTS `am_resources`;
+
 CREATE TABLE `am_resources` (
   `res_id` int(11) NOT NULL AUTO_INCREMENT,
   `res_name` varchar(45) NOT NULL,
@@ -570,7 +565,7 @@ INSERT INTO `am_resources` VALUES   (6,'editUser.xhtml');
 -- Table structure for table `amtool`.`am_role_resource`
 --
 
-DROP TABLE IF EXISTS `am_role_resource`;
+
 CREATE TABLE `am_role_resource` (
   `rr_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
@@ -603,7 +598,7 @@ INSERT INTO `am_role_resource` VALUES   (7,1,6);
 -- Table structure for table `amtool`.`am_trails`
 --
 
-DROP TABLE IF EXISTS `am_trails`;
+
 CREATE TABLE `am_trails` (
   `trail_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_id` int(11) NOT NULL,
@@ -627,17 +622,6 @@ CREATE TABLE `am_trails` (
 /*!40000 ALTER TABLE `am_trails` ENABLE KEYS */;
 
 
---
--- Table structure for table `amtool`.`am_user`
---
-
-
-
---
--- Table structure for table `amtool`.`am_user_status`
---
-
-DROP TABLE IF EXISTS `am_user_status`;
 CREATE TABLE `am_user_status` (
   `us_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(45) NOT NULL DEFAULT '',

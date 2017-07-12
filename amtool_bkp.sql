@@ -407,7 +407,7 @@ CREATE TABLE `am_audit_log` (
   `action` varchar(45) NOT NULL DEFAULT '',
   `description` varchar(200) NOT NULL DEFAULT '',
   `perfomed_by` varchar(45) NOT NULL DEFAULT '',
-  `peformed_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `peformed_date` datetime NOT NULL,
   PRIMARY KEY (`audit_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=270 DEFAULT CHARSET=utf8;
 

@@ -293,6 +293,25 @@ CREATE TABLE `am_product` (
 /*!40000 ALTER TABLE `am_product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_product` ENABLE KEYS */;
 
+
+--
+-- Table structure for table `amtool`.`am_phases`
+--
+
+CREATE TABLE `am_phases` (
+  `phase_id` int(11) NOT NULL AUTO_INCREMENT,
+  `phase_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`phase_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_phases`
+--
+
+/*!40000 ALTER TABLE `am_phases` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_phases` ENABLE KEYS */;
+
+
 --
 -- Table structure for table `amtool`.`am_assigned_acc`
 --
@@ -331,26 +350,6 @@ CREATE TABLE `am_assigned_acc` (
 
 /*!40000 ALTER TABLE `am_assigned_acc` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_assigned_acc` ENABLE KEYS */;
-
-
---
--- Table structure for table `amtool`.`am_phases`
---
-
-CREATE TABLE `am_phases` (
-  `phase_id` int(11) NOT NULL AUTO_INCREMENT,
-  `phase_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`phase_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_phases`
---
-
-/*!40000 ALTER TABLE `am_phases` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_phases` ENABLE KEYS */;
-
-
 
 CREATE TABLE `am_acc_phases` (
   `acc_phs_id` int(11) NOT NULL AUTO_INCREMENT,

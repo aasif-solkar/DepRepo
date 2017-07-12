@@ -1,31 +1,31 @@
-DROP TABLE IF EXISTS `am_acc_phases`;
-CREATE TABLE `am_acc_phases` (
-  `acc_phs_id` int(11) NOT NULL AUTO_INCREMENT,
-  `acc_id` int(11) NOT NULL,
-  `phase_id` int(11) NOT NULL,
-  `phase_date` datetime DEFAULT NULL,
+DROP TABLE IF EXISTS `am_user`;
+CREATE TABLE `am_user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `email_id` varchar(45) NOT NULL DEFAULT '',
+  `role_id` int(11) NOT NULL,
+  `status_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `mobile_no` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `country_id` int(11) NOT NULL DEFAULT '0',
+  `force_passwd` int(1) DEFAULT NULL,
   `created_by_id` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
-  PRIMARY KEY (`acc_phs_id`),
-  KEY `acc_id_idx` (`acc_id`),
-  KEY `phase_id_idx` (`phase_id`),
-  KEY `acc_id_idx3` (`acc_id`),
-  KEY `phase_id_idx3` (`phase_id`),
-  KEY `acc_id_idx4` (`acc_id`),
-  KEY `phase_id_idx4` (`phase_id`),
-  KEY `created_id_idx` (`created_by_id`),
-  CONSTRAINT `acc_id` FOREIGN KEY (`acc_id`) REFERENCES `am_assigned_acc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `created_id` FOREIGN KEY (`created_by_id`) REFERENCES `am_user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `phase_id3` FOREIGN KEY (`phase_id`) REFERENCES `am_phases` (`phase_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email_id_idx` (`email_id`) USING HASH,
+  KEY `role_id_idx` (`role_id`),
+  KEY `country_id_idx` (`country_id`),
+  CONSTRAINT `country_fk` FOREIGN KEY (`country_id`) REFERENCES `am_country` (`country_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `am_role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `amtool`.`am_acc_phases`
+-- Dumping data for table `amtool`.`am_user`
 --
 
-/*!40000 ALTER TABLE `am_acc_phases` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_acc_phases` ENABLE KEYS */;
-
+/*!40000 ALTER TABLE `am_user` DISABLE KEYS */;
+INSERT INTO `am_user` VALUES   (1,'Abhimanyu Kashikar','1wIROGQqh0HPDv8vRi2Nxw==','a',1,1,987654321,76,0,1,'2017-06-30 00:00:00');
+/*!40000 ALTER TABLE `am_user` ENABLE KEYS */;
 
 --
 -- Table structure for table `amtool`.`am_assigned_acc`
@@ -66,6 +66,72 @@ CREATE TABLE `am_assigned_acc` (
 /*!40000 ALTER TABLE `am_assigned_acc` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_assigned_acc` ENABLE KEYS */;
 
+
+--
+-- Table structure for table `amtool`.`am_phases`
+--
+
+DROP TABLE IF EXISTS `am_phases`;
+CREATE TABLE `am_phases` (
+  `phase_id` int(11) NOT NULL AUTO_INCREMENT,
+  `phase_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`phase_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_phases`
+--
+
+/*!40000 ALTER TABLE `am_phases` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_phases` ENABLE KEYS */;
+
+
+DROP TABLE IF EXISTS `am_acc_phases`;
+CREATE TABLE `am_acc_phases` (
+  `acc_phs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `acc_id` int(11) NOT NULL,
+  `phase_id` int(11) NOT NULL,
+  `phase_date` datetime DEFAULT NULL,
+  `created_by_id` int(11) NOT NULL,
+  `created_date` datetime NOT NULL,
+  PRIMARY KEY (`acc_phs_id`),
+  KEY `acc_id_idx` (`acc_id`),
+  KEY `phase_id_idx` (`phase_id`),
+  KEY `acc_id_idx3` (`acc_id`),
+  KEY `phase_id_idx3` (`phase_id`),
+  KEY `acc_id_idx4` (`acc_id`),
+  KEY `phase_id_idx4` (`phase_id`),
+  KEY `created_id_idx` (`created_by_id`),
+  CONSTRAINT `acc_id` FOREIGN KEY (`acc_id`) REFERENCES `am_assigned_acc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `created_id` FOREIGN KEY (`created_by_id`) REFERENCES `am_user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `phase_id3` FOREIGN KEY (`phase_id`) REFERENCES `am_phases` (`phase_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_acc_phases`
+--
+
+/*!40000 ALTER TABLE `am_acc_phases` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_acc_phases` ENABLE KEYS */;
+
+DROP TABLE IF EXISTS `am_product`;
+CREATE TABLE `am_product` (
+  `prod_id` int(11) NOT NULL,
+  `prod_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`prod_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `amtool`.`am_product`
+--
+
+/*!40000 ALTER TABLE `am_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `am_product` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `amtool`.`am_resources`
+--
 
 --
 -- Table structure for table `amtool`.`am_assigned_acc_prod`
@@ -428,47 +494,8 @@ CREATE TABLE `am_new_acc` (
 /*!40000 ALTER TABLE `am_new_acc` DISABLE KEYS */;
 /*!40000 ALTER TABLE `am_new_acc` ENABLE KEYS */;
 
-
---
--- Table structure for table `amtool`.`am_phases`
---
-
-DROP TABLE IF EXISTS `am_phases`;
-CREATE TABLE `am_phases` (
-  `phase_id` int(11) NOT NULL AUTO_INCREMENT,
-  `phase_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`phase_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_phases`
---
-
-/*!40000 ALTER TABLE `am_phases` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_phases` ENABLE KEYS */;
-
-
 --
 -- Table structure for table `amtool`.`am_product`
---
-
-DROP TABLE IF EXISTS `am_product`;
-CREATE TABLE `am_product` (
-  `prod_id` int(11) NOT NULL,
-  `prod_name` varchar(45) NOT NULL,
-  PRIMARY KEY (`prod_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_product`
---
-
-/*!40000 ALTER TABLE `am_product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_product` ENABLE KEYS */;
-
-
---
--- Table structure for table `amtool`.`am_resources`
 --
 
 DROP TABLE IF EXISTS `am_resources`;
@@ -600,34 +627,6 @@ CREATE TABLE `am_trails` (
 -- Table structure for table `amtool`.`am_user`
 --
 
-DROP TABLE IF EXISTS `am_user`;
-CREATE TABLE `am_user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(45) NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `email_id` varchar(45) NOT NULL DEFAULT '',
-  `role_id` int(11) NOT NULL,
-  `status_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `mobile_no` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `country_id` int(11) NOT NULL DEFAULT '0',
-  `force_passwd` int(1) DEFAULT NULL,
-  `created_by_id` int(11) NOT NULL,
-  `created_date` datetime NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `email_id_idx` (`email_id`) USING HASH,
-  KEY `role_id_idx` (`role_id`),
-  KEY `country_id_idx` (`country_id`),
-  CONSTRAINT `country_fk` FOREIGN KEY (`country_id`) REFERENCES `am_country` (`country_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `am_role` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `amtool`.`am_user`
---
-
-/*!40000 ALTER TABLE `am_user` DISABLE KEYS */;
-INSERT INTO `am_user` VALUES   (1,'Abhimanyu Kashikar','1wIROGQqh0HPDv8vRi2Nxw==','a',1,1,987654321,76,0,1,'2017-06-30 00:00:00');
-/*!40000 ALTER TABLE `am_user` ENABLE KEYS */;
 
 
 --

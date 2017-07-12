@@ -280,9 +280,6 @@ CREATE TABLE `am_risk` (
 -- Dumping data for table `amtool`.`am_risk`
 --
 
-/*!40000 ALTER TABLE `am_risk` DISABLE KEYS */;
-/*!40000 ALTER TABLE `am_risk` ENABLE KEYS */;
-
 CREATE TABLE `am_product` (
   `prod_id` int(11) NOT NULL,
   `prod_name` varchar(45) NOT NULL,
